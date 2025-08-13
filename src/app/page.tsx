@@ -6,6 +6,8 @@ import {useEffect, useState} from "react";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
+import NeuralNetwork from "@/components/NeuralNetwork";
+import PortfolioCard from "@/components/PortfolioCard";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {
     HomeIcon, InfoIcon, CodeIcon, MailIcon, LinkedinIcon, GithubIcon, InstagramIcon,
@@ -49,6 +51,46 @@ export default function HomePage() {
         });
         return () => obs.disconnect();
     }, []);
+
+
+    const items = [
+        {
+            title: "SaaS funcional",
+            subtitle: "Multi-tenant, billing e painéis",
+            img: "/portfolio/saas.png",
+            bullets: ["Controle financeiro", "Planos e cobrança", "Métricas em tempo real", "Calculo financeiro de impostos e investimentos", "Exportação de dados"],
+        },
+        {
+            title: "Plataforma de eventos",
+            subtitle: "Datas comemorativas e campanhas",
+            img: "/portfolio/dia_das_maes.png",
+            bullets: ["Agenda e inscrições", "Landing temáticas", "Ranking/gamificação", "Dashboard de gerenciamento de inscrições", "Exportação de dados"],
+        },
+        {
+            title: "Portfólios web",
+            subtitle: "Empresas e pessoais",
+            img: "/portfolio/portfolio_dentistas.png",
+            bullets: ["Apresentação clara e objetiva do produto", "Praticidade para entrar em contato", "Galeria de imagens", "Possibilidade de adicionar vídeos", "Acompanhar acessos", "Integração com redes sociais"],
+        },
+        {
+            title: "Gestão de pacientes",
+            subtitle: "Clínicas e psicologia",
+            img: "/portfolio/gestao_psicologia.png",
+            bullets: ["Prontuário eletrônico", "Agenda e lembretes automáticos", "LGPD e relatórios", "Exportação de dados", "Integração com WhatsApp", "Controle de pagamentos e cobranças"],
+        },
+        {
+            title: "Bot de atendimento",
+            subtitle: "WhatsApp/Telegram + automações",
+            img: "/portfolio/bot_wpp_telegram.png",
+            bullets: ["Respostas automáticas personalizadas", "Integração com CRM e sistemas existentes", "Suporte multi-idiomas", "Segurança de dados e privacidade"],
+        },
+        {
+            title: "Controle de kcal & IMC",
+            subtitle: "Dieta e perda de peso",
+            img: "/portfolio/calculo_imc.png",
+            bullets: ["Refeições e metas personalizadas", "IMC/TMB automático", "Gráficos de evolução", "Classificação por faixa etária e sexo", "Exportação de dados", "Relatórios inteligentes"],
+        },
+    ];
 
     const [form, setForm] = useState({name: "", email: "", subject: "", message: ""});
     const [sending, setSending] = useState(false);
@@ -94,14 +136,14 @@ export default function HomePage() {
                         </ScrollLink>
                     </nav>
                 </div>
-                <div className="flex flex-col items-center space-y-6">
-                    <Link href="#" aria-label="LinkedIn" className="text-gray-400 hover:text-white"><LinkedinIcon
-                        className="h-6 w-6"/></Link>
-                    <Link href="#" aria-label="GitHub" className="text-gray-400 hover:text-white"><GithubIcon
-                        className="h-6 w-6"/></Link>
-                    <Link href="#" aria-label="Instagram" className="text-gray-400 hover:text-white"><InstagramIcon
-                        className="h-6 w-6"/></Link>
-                </div>
+                {/*<div className="flex flex-col items-center space-y-6">*/}
+                {/*    <Link href="#" aria-label="LinkedIn" className="text-gray-400 hover:text-white"><LinkedinIcon*/}
+                {/*        className="h-6 w-6"/></Link>*/}
+                {/*    <Link href="#" aria-label="GitHub" className="text-gray-400 hover:text-white"><GithubIcon*/}
+                {/*        className="h-6 w-6"/></Link>*/}
+                {/*    <Link href="#" aria-label="Instagram" className="text-gray-400 hover:text-white"><InstagramIcon*/}
+                {/*        className="h-6 w-6"/></Link>*/}
+                {/*</div>*/}
             </aside>
 
             {/* Main */}
@@ -137,13 +179,19 @@ export default function HomePage() {
                       </Button>
                     </div>
                   </div>
-                  <div className="relative flex items-center justify-center">
-                    <div className="h-[300px] w-full rounded-lg bg-gray-900 md:h-[400px] lg:h-[500px]" />
-                    {/* Subtle blue glow */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="h-48 w-48 rounded-full bg-[#00BCD4] opacity-20 blur-3xl" />
+                    <div className="relative flex items-center justify-center rounded-lg overflow-hidden h-[300px] md:h-[400px] lg:h-[500px]">
+                        <video
+                            src="/videos/video_kodar.mp4"
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover"
+                        />
+
+                        {/* Overlay azul translúcido */}
+                        <div className="absolute inset-0 bg-[#00BCD4] opacity-20 mix-blend-screen" />
                     </div>
-                  </div>
                 </div>
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500">
                   Scroll <span className="block text-center">↓</span>
@@ -151,40 +199,115 @@ export default function HomePage() {
               </section>
 
               {/* SOBRE */}
-              <section
-                  id="sobre"
-                  className="px-8 md:px-16 lg:px-24 min-h-[80vh] md:min-h-screen flex items-center"
-              >
-                <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 items-center">
-                  <div className="flex flex-col justify-center space-y-4">
-                    <h2 className="text-3xl font-bold md:text-4xl">
-                      Sobre nós
-                      <span className="mt-2 block h-1 w-20 bg-[#00BCD4]" />
-                    </h2>
-                    <p className="text-lg text-gray-400">Conheça nossa história e missão no mundo da tecnologia</p>
-                    <p className="text-gray-300">
-                      A Kodar nasceu da paixão por criar soluções tecnológicas que realmente fazem a diferença. Somos uma equipe de
-                      especialistas dedicados a transformar desafios complexos em produtos digitais elegantes e funcionais.
-                    </p>
-                    <p className="text-gray-300">
-                      Com mais de 5 anos de experiência no mercado, combinamos conhecimento técnico avançado com uma abordagem centrada
-                      no cliente para entregar resultados excepcionais em cada projeto.
-                    </p>
-                    <p className="text-gray-300">
-                      Nossa missão é democratizar o acesso à tecnologia de ponta, ajudando empresas de todos os tamanhos a prosperarem
-                      na era digital.
-                    </p>
-                  </div>
+                <section
+                    id="sobre"
+                    className="relative px-8 md:px-16 lg:px-24 py-20"
+                >
+                    {/* brilho sutil de fundo */}
+                    <div className="pointer-events-none absolute inset-0 -z-10">
+                        <div className="absolute right-0 top-10 h-72 w-72 rounded-full bg-[#00BCD4]/20 blur-3xl" />
+                        <div className="absolute left-10 bottom-0 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl" />
+                    </div>
 
-                  <div className="relative flex items-center justify-center">
-                    <div className="h-[300px] w-full rounded-lg bg-gray-900 md:h-[400px] lg:h-[500px]" />
-                    <div className="absolute inset-0 rounded-lg border border-gray-800 opacity-50" />
-                  </div>
-                </div>
-              </section>
+                    <div className="mx-auto w-full max-w-7xl">
+                        <div className="max-w-3xl">
+                            <h2 className="text-4xl font-bold leading-tight">
+                                Sobre nós
+                                <span className="mt-3 block h-1 w-24 bg-[#00BCD4]" />
+                            </h2>
+                            <p className="mt-4 text-lg text-gray-400">
+                                Conheça nossa história e missão no mundo da tecnologia
+                            </p>
+                        </div>
+
+                        {/* bloco principal */}
+                        <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
+                            {/* coluna texto */}
+                            <div className="md:col-span-2 space-y-5 text-gray-300">
+                                <p>
+                                    A <span className="font-semibold text-white">Kodar</span> nasceu da paixão por criar soluções que realmente
+                                    resolvem problemas. Reunimos <span className="font-semibold text-white">profissionais</span> com
+                                    vasta experiência de mercado em <span className="text-white">produtos digitais, integrações complexas</span> e
+                                    <span className="text-white"> arquitetura escalável</span>.
+                                </p>
+                                <p>
+                                    Atuamos com uma abordagem <span className="text-white">orientada a resultados</span>, unindo boas práticas,
+                                    testes e métricas para entregar software com <span className="text-white">qualidade, performance</span> e
+                                    <span className="text-white"> segurança</span>.
+                                </p>
+
+                                {/* diferenciais */}
+                                <div className="grid gap-4 sm:grid-cols-2">
+                                    <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                                        <div className="mb-2 text-white font-medium">Time sênior & multidisciplinar</div>
+                                        <ul className="space-y-2 text-sm text-gray-300">
+                                            <li className="flex items-start gap-2">
+                                                <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#00BCD4]" />
+                                                Front‑end moderno
+                                            </li>
+                                            <li className="flex items-start gap-2">
+                                                <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#00BCD4]" />
+                                                Back‑end robusto
+                                            </li>
+                                            <li className="flex items-start gap-2">
+                                                <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#00BCD4]" />
+                                                Integrações, automações e APIs
+                                            </li>
+                                            <li className="flex items-start gap-2">
+                                                <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#00BCD4]" />
+                                                Suporte e manutenção
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                                        <div className="mb-2 text-white font-medium">Como entregamos</div>
+                                        <ul className="space-y-2 text-sm text-gray-300">
+                                            <li className="flex items-start gap-2">
+                                                <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#00BCD4]" />
+                                                Descoberta e mapeamento de requisitos
+                                            </li>
+                                            <li className="flex items-start gap-2">
+                                                <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#00BCD4]" />
+                                                Prototipação rápida e validação com usuários
+                                            </li>
+                                            <li className="flex items-start gap-2">
+                                                <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#00BCD4]" />
+                                                Entregas contínuas com métricas e qualidade
+                                            </li>
+                                            <li className="flex items-start gap-2">
+                                                <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#00BCD4]" />
+                                                Monitoramento e suporte pós-lançamento
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            {/* coluna stats */}
+                            <div className="grid content-start gap-4 mt-[-45px]">
+
+                            <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+                                    <div className="text-4xl font-bold text-white">6+</div>
+                                    <div className="mt-1 text-sm text-gray-400">anos de mercado</div>
+                                </div>
+                                <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+                                    <div className="text-4xl font-bold text-white">30+</div>
+                                    <div className="mt-1 text-sm text-gray-400">projetos entregues</div>
+                                </div>
+                                <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+                                    <div className="text-4xl font-bold text-white">+12</div>
+                                    <div className="mt-1 text-sm text-gray-400">segmentos atendidos</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
 
-              {/* SERVIÇOS */}
+
+                {/* SERVIÇOS */}
                 <section id="servicos" className="px-8 py-16 md:px-16 lg:px-24">
                     <h2 className="text-3xl font-bold md:text-4xl">
                         Nossos serviços
@@ -212,14 +335,16 @@ export default function HomePage() {
 
                 {/* PORTFÓLIO */}
                 <section className="px-8 py-16 md:px-16 lg:px-24">
-                    <h2 className="text-3xl font-bold md:text-4xl">
-                        Portfólio
-                        <span className="mt-2 block h-1 w-20 bg-[#00BCD4]"/>
-                    </h2>
-                    <p className="mb-12 text-lg text-gray-400">Conheça alguns dos nossos projetos de sucesso</p>
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                        <PortfolioCard/><PortfolioCard/><PortfolioCard/>
-                        <PortfolioCard/><PortfolioCard/><PortfolioCard/>
+                        {items.map((it) => (
+                            <PortfolioCard
+                                key={it.title}
+                                title={it.title}
+                                subtitle={it.subtitle}
+                                img={it.img}
+                                bullets={it.bullets}
+                            />
+                        ))}
                     </div>
                 </section>
 
@@ -326,8 +451,4 @@ function ServiceCard({icon, title, description}: { icon: React.ReactNode; title:
             </CardContent>
         </Card>
     );
-}
-
-function PortfolioCard() {
-    return <Card className="h-64 border-none bg-gray-900"/>;
 }
