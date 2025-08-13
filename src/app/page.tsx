@@ -8,6 +8,7 @@ import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
 import NeuralNetwork from "@/components/NeuralNetwork";
 import PortfolioCard from "@/components/PortfolioCard";
+import { MessageCircle } from "lucide-react";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {
     HomeIcon, InfoIcon, CodeIcon, MailIcon, LinkedinIcon, GithubIcon, InstagramIcon,
@@ -112,7 +113,7 @@ export default function HomePage() {
         <div className="flex min-h-screen bg-black text-white">
             {/* Sidebar */}
             <aside
-                className="fixed left-0 top-0 z-50 flex h-full w-20 flex-col items-center justify-between border-r border-gray-800 bg-black py-6">
+                className="hidden md:flex fixed left-0 top-0 z-50 h-full w-20 flex-col items-center justify-between border-r border-gray-800 bg-black py-6">
                 <div className="flex flex-col items-center space-y-8">
                     <div
                         className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#00BCD4] text-2xl font-bold text-black">K
@@ -146,62 +147,89 @@ export default function HomePage() {
                 {/*</div>*/}
             </aside>
 
+            <div className="md:hidden fixed top-0 left-0 right-0 z-50 border-b border-gray-800 bg-black/90 backdrop-blur supports-[backdrop-filter]:bg-black/60">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#00BCD4] text-lg font-bold text-black">
+                        K
+                    </div>
+                    <nav className="flex items-center gap-6 text-gray-400">
+                        <ScrollLink to="home" ariaLabel="Home" className="hover:text-white"><HomeIcon className="h-6 w-6" /></ScrollLink>
+                        <ScrollLink to="sobre" ariaLabel="About" className="hover:text-white"><InfoIcon className="h-6 w-6" /></ScrollLink>
+                        <ScrollLink to="servicos" ariaLabel="Services" className="hover:text-white"><CodeIcon className="h-6 w-6" /></ScrollLink>
+                        <ScrollLink to="contato" ariaLabel="Contact" className="hover:text-white"><MailIcon className="h-6 w-6" /></ScrollLink>
+                    </nav>
+                </div>
+            </div>
+
             {/* Main */}
-            <main className="ml-20 flex-1">
+            <main className="flex-1 md:ml-20 pt-14 md:pt-0">
                 {/* HERO */}
-              <section className="relative flex h-screen items-center justify-center overflow-hidden px-8 py-16 md:px-16 lg:px-24">
-                <div className="absolute inset-0 z-0 bg-grid-pattern opacity-10" />
-                <div className="relative z-10 grid w-full max-w-7xl grid-cols-1 gap-8 md:grid-cols-2">
-                  <div className="flex flex-col justify-center space-y-3">
-                    <Image
-                        src="/kodar_logo_recort.png"
-                        alt="Kodar Soluções em Tecnologia"
-                        width={450}
-                        height={340}
-                        className="mb-3"
-                    />
-                    <h1 className="text-2xl font-bold leading-tight md:text-2xl lg:text-6xl">
-                      Transformando ideias em{" "}
-                      <span className="relative text-[#00BCD4]">
-                  soluções digitais
-                  <span className="absolute bottom-0 left-0 h-1 w-full bg-[#00BCD4]" />
-                </span>
-                    </h1>
-                    <p className="text-lg text-gray-400 md:text-xl">
-                      Desenvolvemos tecnologias inovadoras que impulsionam o crescimento do seu negócio no mundo digital.
-                    </p>
-                    <div className="flex space-x-4">
-                      <Button className="bg-[#00BCD4] text-black hover:bg-[#00BCD4]/90">
-                        Iniciar projeto <SendIcon className="ml-2 h-4 w-4 rotate-45" />
-                      </Button>
-                      <Button variant="outline" className="border-[#00BCD4] text-[#00BCD4] hover:bg-[#00BCD4]/10">
-                        Conheça nosso trabalho
-                      </Button>
-                    </div>
-                  </div>
-                    <div className="relative flex items-center justify-center rounded-lg overflow-hidden h-[300px] md:h-[400px] lg:h-[500px]">
-                        <video
-                            src="/videos/video_kodar.mp4"
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="absolute inset-0 w-full h-full object-cover"
-                        />
+                <section id="home" className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-4 py-20 md:px-16 lg:px-24">
+                    <div className="absolute inset-0 z-0 bg-grid-pattern opacity-10" />
+                    <div className="relative z-10 grid w-full max-w-7xl grid-cols-1 gap-10 md:grid-cols-2">
+                        <div className="flex flex-col justify-center space-y-4">
+                            <Image
+                                src="/kodar_logo_recort.png"
+                                alt="Kodar Soluções em Tecnologia"
+                                width={360}
+                                height={240}
+                                className="w-40 sm:w-52 md:w-[420px] h-auto"
+                                priority
+                            />
+                            <h1 className="text-3xl font-bold leading-tight md:text-5xl lg:text-6xl">
+                                Transformando ideias em{" "}
+                                <span className="relative text-[#00BCD4]">
+          soluções digitais
+          <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-[#00BCD4]" />
+        </span>
+                            </h1>
+                            <p className="text-base text-gray-400 md:text-lg">
+                                Desenvolvemos tecnologias inovadoras que impulsionam o crescimento do seu negócio no mundo digital.
+                            </p>
+                            <div className="flex space-x-4">
+                                <ScrollLink to="contato" ariaLabel="Ir para contato">
+                                    <Button className="bg-[#00BCD4] text-black hover:bg-[#00BCD4]/90">
+                                        Iniciar projeto <SendIcon className="ml-2 h-4 w-4 rotate-45" />
+                                    </Button>
+                                </ScrollLink>
+                                <ScrollLink to="portfolio" ariaLabel="Ir para portfólio">
+                                    <Button variant="outline" className="border-[#00BCD4] text-[#00BCD4] hover:bg-[#00BCD4]/10">
+                                        Conheça nosso trabalho
+                                    </Button>
+                                </ScrollLink>
+                            </div>
 
-                        {/* Overlay azul translúcido */}
-                        <div className="absolute inset-0 bg-[#00BCD4] opacity-20 mix-blend-screen" />
-                    </div>
-                </div>
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500">
-                  Scroll <span className="block text-center">↓</span>
-                </div>
-              </section>
+                        </div>
 
-              {/* SOBRE */}
+                        <div className="relative flex items-center justify-center overflow-hidden rounded-lg h-56 sm:h-72 md:h-[400px] lg:h-[500px]">
+                            <video
+                                src="/videos/video_kodar.mp4"
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="absolute inset-0 h-full w-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-[#00BCD4] opacity-20 mix-blend-screen" />
+                        </div>
+                    </div>
+
+                    <ScrollLink to="sobre" ariaLabel="Ir para seção sobre">
+                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-[#00BCD4] cursor-pointer">
+                            <svg className="h-6 w-6 animate-bounce" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                            <span className="text-xs mt-1">Scroll</span>
+                        </div>
+                    </ScrollLink>
+
+                </section>
+
+
+                {/* SOBRE */}
                 <section
                     id="sobre"
-                    className="relative px-8 md:px-16 lg:px-24 py-20"
+                    className="relative px-4 md:px-16 lg:px-24 py-16 md:py-20"
                 >
                     {/* brilho sutil de fundo */}
                     <div className="pointer-events-none absolute inset-0 -z-10">
@@ -286,7 +314,7 @@ export default function HomePage() {
                             </div>
 
                             {/* coluna stats */}
-                            <div className="grid content-start gap-4 mt-[-45px]">
+                            <div className="grid content-start gap-4 md:mt-[-45px]">
 
                             <div className="rounded-xl border border-white/10 bg-white/5 p-5">
                                     <div className="text-4xl font-bold text-white">6+</div>
@@ -334,8 +362,8 @@ export default function HomePage() {
                 </section>
 
                 {/* PORTFÓLIO */}
-                <section className="px-8 py-16 md:px-16 lg:px-24">
-                    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <section id="portfolio" className="px-4 py-16 md:px-16 lg:px-24">
+                    <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
                         {items.map((it) => (
                             <PortfolioCard
                                 key={it.title}
@@ -377,17 +405,43 @@ export default function HomePage() {
                                 </div>
 
                                 <div className="flex items-start space-x-4">
-                                    <PhoneIcon className="h-6 w-6 flex-shrink-0 text-[#00BCD4]"/>
+                                    {/* Ícone oficial do WhatsApp */}
+                                    <a
+                                        href="https://wa.me/5561981245558"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex-shrink-0"
+                                        aria-label="Abrir conversa no WhatsApp"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 32 32"
+                                            className="h-6 w-6 text-[#25D366]"
+                                            fill="currentColor"
+                                        >
+                                            <path d="M16.001 3.2C9.373 3.2 4 8.573 4 15.2c0 2.657.869 5.115 2.348 7.1L4.2 28.8l6.675-2.08A11.758 11.758 0 0 0 16 27.2c6.628 0 12.001-5.373 12.001-12s-5.373-12-12-12zm0 21.6a9.57 9.57 0 0 1-5.121-1.48l-.368-.223-3.964 1.235 1.276-3.873-.239-.386A9.556 9.556 0 0 1 6.4 15.2c0-5.29 4.31-9.6 9.6-9.6 5.29 0 9.6 4.31 9.6 9.6 0 5.29-4.31 9.6-9.6 9.6zm5.357-7.166c-.293-.147-1.733-.853-2.002-.95-.268-.098-.464-.147-.66.147-.195.293-.755.95-.927 1.145-.171.195-.342.22-.635.073-.293-.147-1.236-.455-2.354-1.45-.87-.777-1.457-1.737-1.629-2.03-.171-.293-.018-.451.13-.598.134-.134.293-.342.439-.512.146-.171.195-.293.293-.488.098-.195.049-.366-.024-.512-.073-.146-.66-1.587-.905-2.172-.238-.57-.48-.493-.66-.502l-.562-.01c-.195 0-.512.073-.78.366s-1.024 1-1.024 2.44 1.048 2.834 1.193 3.03c.146.195 2.061 3.146 5 4.415.699.301 1.243.48 1.667.615.7.223 1.337.192 1.841.116.562-.084 1.733-.708 1.977-1.392.244-.684.244-1.27.171-1.392-.073-.122-.268-.195-.562-.342z" />
+                                        </svg>
+                                    </a>
+
+                                    {/* Número clicável */}
                                     <div>
-                                        <p className="font-semibold">+55 (61) 98124-5558</p>
+                                        <a
+                                            href="https://wa.me/5561981245558"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="font-semibold text-[#25D366] hover:underline"
+                                        >
+                                            +55 (61) 98124-5558
+                                        </a>
                                         <p className="text-gray-400">Seg - Sex, 8h - 20h</p>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
 
-                        {/* Coluna DIREITA: formulário */}
-                        <Card className="border-none bg-gray-900 p-6 self-start mr-3 -mt-4 md:-ml-20">
+                        {/* formulário */}
+                        <Card className="border-none bg-gray-900 p-6 self-start md:mr-3 md:-mt-4 md:-ml-20">
                             <form className="space-y-4">
                                 <div>
                                     <label htmlFor="name" className="sr-only">Nome</label>
