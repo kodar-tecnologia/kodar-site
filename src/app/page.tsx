@@ -71,7 +71,7 @@ export default function HomePage() {
             title: "Portfólios web",
             subtitle: "Empresas e pessoais",
             img: "/portfolio/portfolio_dentistas.png",
-            bullets: ["Apresentação clara e objetiva do produto", "Praticidade para entrar em contato", "Galeria de imagens", "Possibilidade de adicionar vídeos", "Acompanhar acessos", "Integração com redes sociais"],
+            bullets: ["Apresentação clara e objetiva do produto", "Praticidade", "Galeria de imagens", "Acompanhar acessos", "Integração com redes sociais"],
         },
         {
             title: "Gestão de pacientes",
@@ -377,35 +377,34 @@ export default function HomePage() {
                 </section>
 
                 {/* CONTATO */}
-                <section id="contato" className="px-8 py-16 md:px-16 lg:px-24">
-                    <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-                        {/* Coluna ESQUERDA: título, descrição e infos de contato */}
-                        <div className="space-y-6">
+                <section id="contato" className="px-4 py-16 md:px-16 lg:px-24">
+                    <div className="mx-auto w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 items-start gap-8 lg:gap-12">
+                        {/* ESQUERDA — título + infos (vem primeiro no mobile) */}
+                        <div className="min-w-0 space-y-6 order-1">
                             <h2 className="text-3xl font-bold md:text-4xl">
                                 Contato
-                                <span className="mt-2 block h-1 w-20 bg-[#00BCD4]"/>
+                                <span className="mt-2 block h-1 w-20 bg-[#00BCD4]" />
                             </h2>
                             <p className="text-lg text-gray-400">Vamos conversar sobre o seu próximo projeto</p>
 
                             <div className="space-y-6 pt-2">
-                                <div className="flex items-start space-x-4">
-                                    <MapPinIcon className="h-6 w-6 flex-shrink-0 text-[#00BCD4]"/>
-                                    <div>
+                                <div className="flex items-start gap-4">
+                                    <MapPinIcon className="h-6 w-6 flex-shrink-0 text-[#00BCD4]" />
+                                    <div className="min-w-0">
                                         <p className="font-semibold">Brasília, DF</p>
                                         <p className="text-gray-400">Brasil</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start space-x-4">
-                                    <MailIcon className="h-6 w-6 flex-shrink-0 text-[#00BCD4]"/>
-                                    <div>
-                                        <p className="font-semibold">kodartecnologia@gmail.com</p>
+                                <div className="flex items-start gap-4">
+                                    <MailIcon className="h-6 w-6 flex-shrink-0 text-[#00BCD4]" />
+                                    <div className="min-w-0">
+                                        <p className="font-semibold break-words">kodartecnologia@gmail.com</p>
                                         <p className="text-gray-400">Resposta em até 24h</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start space-x-4">
-                                    {/* Ícone oficial do WhatsApp */}
+                                <div className="flex items-start gap-4">
                                     <a
                                         href="https://wa.me/5561981245558"
                                         target="_blank"
@@ -413,81 +412,51 @@ export default function HomePage() {
                                         className="flex-shrink-0"
                                         aria-label="Abrir conversa no WhatsApp"
                                     >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 32 32"
-                                            className="h-6 w-6 text-[#25D366]"
-                                            fill="currentColor"
-                                        >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="h-6 w-6 text-[#25D366]" fill="currentColor">
                                             <path d="M16.001 3.2C9.373 3.2 4 8.573 4 15.2c0 2.657.869 5.115 2.348 7.1L4.2 28.8l6.675-2.08A11.758 11.758 0 0 0 16 27.2c6.628 0 12.001-5.373 12.001-12s-5.373-12-12-12zm0 21.6a9.57 9.57 0 0 1-5.121-1.48l-.368-.223-3.964 1.235 1.276-3.873-.239-.386A9.556 9.556 0 0 1 6.4 15.2c0-5.29 4.31-9.6 9.6-9.6 5.29 0 9.6 4.31 9.6 9.6 0 5.29-4.31 9.6-9.6 9.6zm5.357-7.166c-.293-.147-1.733-.853-2.002-.95-.268-.098-.464-.147-.66.147-.195.293-.755.95-.927 1.145-.171.195-.342.22-.635.073-.293-.147-1.236-.455-2.354-1.45-.87-.777-1.457-1.737-1.629-2.03-.171-.293-.018-.451.13-.598.134-.134.293-.342.439-.512.146-.171.195-.293.293-.488.098-.195.049-.366-.024-.512-.073-.146-.66-1.587-.905-2.172-.238-.57-.48-.493-.66-.502l-.562-.01c-.195 0-.512.073-.78.366s-1.024 1-1.024 2.44 1.048 2.834 1.193 3.03c.146.195 2.061 3.146 5 4.415.699.301 1.243.48 1.667.615.7.223 1.337.192 1.841.116.562-.084 1.733-.708 1.977-1.392.244-.684.244-1.27.171-1.392-.073-.122-.268-.195-.562-.342z" />
                                         </svg>
                                     </a>
-
-                                    {/* Número clicável */}
-                                    <div>
-                                        <a
-                                            href="https://wa.me/5561981245558"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="font-semibold text-[#25D366] hover:underline"
-                                        >
+                                    <div className="min-w-0">
+                                        <a href="https://wa.me/5561981245558" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#25D366] hover:underline">
                                             +55 (61) 98124-5558
                                         </a>
                                         <p className="text-gray-400">Seg - Sex, 8h - 20h</p>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 
-                        {/* formulário */}
-                        <Card className="border-none bg-gray-900 p-6 self-start md:mr-3 md:-mt-4 md:-ml-20">
+                        {/* DIREITA — formulário (vem embaixo no mobile) */}
+                        <Card
+                            className="min-w-0 w-full order-2 mt-8 lg:mt-0
+                 border-none bg-gray-900 p-6
+                 lg:self-start lg:mr-3 lg:-mt-4 lg:-ml-20"
+                        >
                             <form className="space-y-4">
                                 <div>
                                     <label htmlFor="name" className="sr-only">Nome</label>
-                                    <Input
-                                        id="name"
-                                        placeholder="Seu nome completo"
-                                        className="bg-gray-800 text-white placeholder:text-gray-500 border-none"
-                                    />
+                                    <Input id="name" placeholder="Seu nome completo" className="w-full bg-gray-800 text-white placeholder:text-gray-500 border-none" />
                                 </div>
-
                                 <div>
                                     <label htmlFor="email" className="sr-only">Email</label>
-                                    <Input
-                                        id="email"
-                                        type="email"
-                                        placeholder="seu@email.com"
-                                        className="bg-gray-800 text-white placeholder:text-gray-500 border-none"
-                                    />
+                                    <Input id="email" type="email" placeholder="seu@email.com" className="w-full bg-gray-800 text-white placeholder:text-gray-500 border-none" />
                                 </div>
-
                                 <div>
                                     <label htmlFor="subject" className="sr-only">Assunto</label>
-                                    <Input
-                                        id="subject"
-                                        placeholder="Do que se trata?"
-                                        className="bg-gray-800 text-white placeholder:text-gray-500 border-none"
-                                    />
+                                    <Input id="subject" placeholder="Do que se trata?" className="w-full bg-gray-800 text-white placeholder:text-gray-500 border-none" />
                                 </div>
-
                                 <div>
                                     <label htmlFor="message" className="sr-only">Mensagem</label>
-                                    <Textarea
-                                        id="message"
-                                        rows={5}
-                                        placeholder="Descreva seu projeto ou dúvida..."
-                                        className="bg-gray-800 text-white placeholder:text-gray-500 border-none"
-                                    />
+                                    <Textarea id="message" rows={5} placeholder="Descreva seu projeto ou dúvida..." className="w-full bg-gray-800 text-white placeholder:text-gray-500 border-none" />
                                 </div>
-
                                 <Button type="submit" className="w-full bg-[#00BCD4] text-black hover:bg-[#00BCD4]/90">
-                                    Enviar mensagem <SendIcon className="ml-2 h-4 w-4 rotate-45"/>
+                                    Enviar mensagem <SendIcon className="ml-2 h-4 w-4 rotate-45" />
                                 </Button>
                             </form>
                         </Card>
                     </div>
                 </section>
+
             </main>
         </div>
     );
